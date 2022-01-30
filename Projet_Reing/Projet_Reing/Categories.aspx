@@ -1,24 +1,29 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Categories.aspx.cs" Inherits="Categories" %>
+﻿<%@ Page Title="Catégories" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeFile="Categories.aspx.cs" Inherits="About" %>
 
-<!DOCTYPE html>
+<asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
+    <div id="content">
+ 		<div id="rightColumn">
+		</div>
+ 
+ 		<div id="leftColumn">
+			<h3>Catégories</h3>
+            <asp:ListView ID="ListView1" runat="server">
+                <EmptyDataTemplate>No Menu Items.</EmptyDataTemplate>
+                <ItemSeparatorTemplate></ItemSeparatorTemplate>
+                <ItemTemplate>
+                    <li>
+                       <a href='#'><%# Eval("libelle_categorie") %></a>
+                    </li>
+                </ItemTemplate>               
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <title></title>
-</head>
-<body>
-    <form id="form1" runat="server">
-        <div>
-            <h1>Catégories dans notre base de données sql server :</h1>
-            <asp:GridView ID="GridView1" AutoGenerateColumns="false" runat="server">
-                <Columns>
-                    <asp:BoundField ItemStyle-Width="150px" DataField="code_categorie" HeaderText="Code Catégorie" />
-                    <asp:BoundField ItemStyle-Width="150px" DataField="libelle_categorie" HeaderText="Libellé Catégorie" />
-                </Columns>
-
-            </asp:GridView>
-        </div>
-    </form>
-</body>
-</html>
+                <LayoutTemplate>
+                    <ul ID="itemPlaceholderContainer" runat="server" style="font-family: Verdana, Arial, Helvetica, sans-serif;">
+                        <li runat="server" id="itemPlaceholder" />
+                    </ul>
+                    <div style="text-align: left;background-color: #FFCC66;font-family: Verdana, Arial, Helvetica, sans-serif;color: #333333;"></div>
+                </LayoutTemplate>
+            </asp:ListView>
+		</div>
+		<div class="clear"></div>
+	</div>
+</asp:Content>
