@@ -6,6 +6,11 @@ using System.Web;
 using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Configuration;
+using System.Data.SqlClient;
+using System.Data;
+
+
 
 public partial class SiteMaster : MasterPage
 {
@@ -43,6 +48,7 @@ public partial class SiteMaster : MasterPage
         }
 
         Page.PreLoad += master_Page_PreLoad;
+        
     }
 
     protected void master_Page_PreLoad(object sender, EventArgs e)
@@ -66,8 +72,18 @@ public partial class SiteMaster : MasterPage
 
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        string dbConnectionString = ConfigurationManager.ConnectionStrings["DataBaseConnectionString"].ConnectionString;
+        var queryString = "SELECT * FROM categorie";
+        var dbConnection = new SqlConnection(dbConnectionString);
+        var dataAdapter = new SqlDataAdapter(queryString, dbConnection);
+        var commandBuilder = new SqlCommandBuilder(dataAdapter);
+        var ds = new DataSet();
+        dataAdapter.Fill(ds);
+        categoryList.DataSource = ds;
+        categoryList.DataBind();
+        categoryList.Visible = true;
     }
+    
 
     protected void Unnamed_LoggingOut(object sender, LoginCancelEventArgs e)
     {
