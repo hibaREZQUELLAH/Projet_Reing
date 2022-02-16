@@ -17,14 +17,15 @@ public partial class About : Page
         var dbConnection = new SqlConnection(dbConnectionString);
         var dataAdapter = new SqlDataAdapter(queryString, dbConnection);
         var commandBuilder = new SqlCommandBuilder(dataAdapter);
-        var ds = new DataTable();
+        DataTable ds;
+        ds= new DataTable();
         dataAdapter.Fill(ds);
         var libelle_cat= ds.Rows[0]["libelle_categorie"].ToString();
 
         System.Diagnostics.Debug.WriteLine(libelle_cat);
         string csvPath = Server.MapPath("~/Files/amazon_product.csv") ;
-        DataTable dt = new DataTable();
-        dt.Columns.AddRange(new DataColumn[5] { new DataColumn("product", typeof(string)),
+        DataTable dt = new DataTable { TableName = "product" };
+        dt.Columns.AddRange(new DataColumn[5] { new DataColumn("product_name", typeof(string)),
             new DataColumn("price", typeof(string)),
             new DataColumn("rating", typeof(string)),
             new DataColumn("url", typeof(string)),
@@ -50,15 +51,19 @@ public partial class About : Page
 
             }
         }
-       
+        
         //Bind the DataTable.
         productList.DataSource = dt;
         productList.DataBind();
+     
+
+
+
 
 
     }
-    
 
 
+ 
 
 }

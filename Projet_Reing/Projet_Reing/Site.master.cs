@@ -12,6 +12,7 @@ using System.Data;
 
 
 
+
 public partial class SiteMaster : MasterPage
 {
     private const string AntiXsrfTokenKey = "__AntiXsrfToken";
@@ -84,7 +85,6 @@ public partial class SiteMaster : MasterPage
         categoryList.Visible = true;
     }
     
-
     protected void Unnamed_LoggingOut(object sender, LoginCancelEventArgs e)
     {
         Context.GetOwinContext().Authentication.SignOut();

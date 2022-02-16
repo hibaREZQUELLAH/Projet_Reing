@@ -6,7 +6,6 @@
             <hgroup>
                 <h2><%: Page.Title %></h2>
             </hgroup>
-
             <asp:ListView ID="productList" runat="server">
                 <EmptyDataTemplate>
                     <table >
@@ -30,7 +29,7 @@
                                 <td>
                                    
                                         <span>
-                                             <%#:Eval("product")%>
+                                             <%#:Eval("product_name")%>
                                         </span>
                                  
                                     <br />
