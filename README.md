@@ -2,7 +2,7 @@
 
 # Home Page
 
-![image](https://user-images.githubusercontent.com/91433116/151897571-2ba9b15f-88a4-4342-a3dd-aa09b4ada898.png)
+![image](https://user-images.githubusercontent.com/91433116/154356244-2054f30d-723a-451d-ad8a-f040cf9fbe2d.png)
 
 # Products List 
 
